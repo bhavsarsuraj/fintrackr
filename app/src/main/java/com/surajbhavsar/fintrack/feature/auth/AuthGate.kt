@@ -1,0 +1,35 @@
+package com.surajbhavsar.fintrack.feature.auth
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.surajbhavsar.fintrack.domain.repository.AuthState
+
+@Composable
+fun AuthGate(
+    signedInContent: @Composable () -> Unit,
+    viewModel: AuthViewModel = hiltViewModel(),
+) {
+    val authState by viewModel.authState.collectAsStateWithLifecycle()
+
+    when (authState) {
+        AuthState.Loading -> Surface(
+            color = MaterialTheme.colorScheme.background,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
+        AuthState.SignedOut -> AuthScreen(viewModel = viewModel)
+        is AuthState.SignedIn -> signedInContent()
+    }
+}

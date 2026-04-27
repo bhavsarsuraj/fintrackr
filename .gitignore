@@ -1,0 +1,76 @@
+# =============================================================================
+# Android / Gradle
+# =============================================================================
+*.iml
+.gradle/
+/local.properties
+local.properties
+/build/
+build/
+**/build/
+/captures
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# =============================================================================
+# IDE — Android Studio / IntelliJ
+# =============================================================================
+/.idea/
+.idea/
+*.iws
+*.ipr
+.kotlin/
+
+# =============================================================================
+# OS junk
+# =============================================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =============================================================================
+# Secrets — DO NOT COMMIT
+# =============================================================================
+# Firebase config (project IDs + API keys; provide your own at runtime)
+google-services.json
+**/google-services.json
+GoogleService-Info.plist
+**/GoogleService-Info.plist
+firebase-debug.log
+firestore-debug.log
+
+# Signing keys
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+keystore.properties
+release-keys/
+signing.properties
+
+# Service-account / cloud credentials
+service-account*.json
+serviceAccount*.json
+credentials*.json
+gha-creds-*.json
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# =============================================================================
+# Logs / coverage
+# =============================================================================
+*.log
+hs_err_pid*
+local.log
+coverage/
+jacoco.exec
